@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="base_fragment_item">
+        <item>RecycleView线性item移动</item>
+        <item>RecycleView网格item移动</item>
+    </array>
+
+</resources>

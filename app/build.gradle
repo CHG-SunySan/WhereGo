@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        applicationId "com.sunysan.wherego"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets{
+        main{
+            res.srcDirs = [
+                    'src/main/res','src/main/res/test'
+            ]
+            assets.srcDirs = ['src/main/assets']
+            jniLibs.srcDirs = ['libs']
+            aidl.srcDirs= ['src/main/java']
+        }
+    }
+}
+
+//引入aar需要加入这个配置
+repositories{
+    flatDir{
+        dirs'libs'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'me.yokeyword:fragmentation-swipeback:0.7.9'
+
+    compile 'me.yokeyword:fragmentation:0.7.12'
+//    compile (name:'fragmentation-debug',ext:'aar')
+//    compile (name:'fragmentation_swipeback-debug',ext:'aar')
+    compile project(path: ':tool')
+    compile project(path: ':recycleview')
+}
